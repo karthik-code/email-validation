@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>JavaScript Validation</title>
+<script language="Javascript">
+var testresults
+function CheckEmail(){
+var str=document.frm2.txtEmail.value
+var filter=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
+if (filter.test(str)){
+testresults=true
+document.getElementById("result").innerHTML = "<font color=green size=14><p> Valid E-mail Address</p></font>"
+}
+else{
+document.getElementById("result").innerHTML = "<font color=red size=14><p>Invalid E-mail ID </p></font>"
+testresults=false
+}
+return (testresults)
+}
+</script>
+</head>
+<body>
+<form name="frm2" method="post" action="#" onSubmit="return CheckEmail()">
+<p>Enter an E-mail Address : <input type="text" name="txtEmail" onKeyup="return CheckEmail()">
+</p>
+<p><input type="submit" name="submit" value="submit"></p>
+</form>
+<div id="result"></div>
+</body>
+</html>
