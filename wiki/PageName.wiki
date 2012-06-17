@@ -1,11 +1,9 @@
 #Reg exp
 
-= Introduction =
+== Introduction ==
 
-Some basics in Regular expressions used in this project
+Some basics in Regular expressions used in this project are explained here.
 
-
-= Details =
 
 ==test()==
 
