@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>JavaScript Validation</title>
+<script language="Javascript">
+function emailcheck(str) {
+var at = "@"
+var dot = "."
+var lat = str.indexOf(at)
+var lstr = str.length
+var ldot = str.indexOf(dot)
+
+//@ not available, @ is first letter, 
+if (str.indexOf(at)==-1 || str.indexOf(at)==0){
+return false
+}
+// . not available, . is first letter
+if (str.indexOf(dot)==-1 || str.indexOf(dot)==0){
+return false
+}
+// checks @ exists more than once 
+if(str.indexOf(at,lat+1)!=-1){
+return false
+}
+// checks @ and . appears immediately
+if(str.substring(lat-1, lat)==dot || str.substring(lat+1, lat+2)==dot){
+return false
+}
+//checks dot appears after @ and ateast one character
+if(str.indexOf(dot,(lat+2)) == -1){
+return false
+}
+//checks dot appears at last
+if(str.substring(lstr-1, lstr)==dot){
+return false
+}
+
+//checks any space appears
+if(str.indexOf(" ") != -1){
+return false
+}
+return true
+}
+
+function ValidateEmail(){
+var emailID = document.frm1.txtEmail
+if((emailID.value==null)||(emailID.value=="")){
+document.getElementById("result").innerHTML = "<font color=red size=14><p> Please Enter E-mail Address</p></font>"
+emailID.focus()
+return false
+}
+if(emailcheck(emailID.value)==false){
+document.getElementById("result").innerHTML = "<font color=red size=14><p>Invalid E-mail ID </p></font>"
+return false
+}
+else{
+document.getElementById("result").innerHTML = "<font color=green size=14><p> Valid E-mail Address</p></font>"
+return true
+}
+}
+</script>
+
+</head>
+<body>
+<form name="frm1" method="post" action="#" onSubmit="return ValidateEmail()">
+<p>Enter an E-mail Address : <input type="text" name="txtEmail" onKeyup="return ValidateEmail()">
+</p>
+<p><input type="submit" name="submit" value="submit"></p>
+</form>
+
+<div id="result"></div>
+
+</body>
+</html>
