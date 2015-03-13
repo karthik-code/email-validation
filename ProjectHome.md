@@ -1,0 +1,1 @@
+Simple JavaScript client side email validation script
